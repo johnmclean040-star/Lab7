@@ -1,33 +1,29 @@
 /* Lab7 Part2 : analysis of text */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-
 #define MAX 1000 /* The maximum number of characters in a line of input */
 
-int main()
-{
+int main() {
   char text[MAX], c;
   int i;
   int lowercase, uppercase, digits, other;
   int length;
-
+  bool Pala = false;
   puts("Type some text (then ENTER):");
 
   /* Save typed characters in text[]: */
 
-  for (i = 0; i < MAX; i++)
-  {
+  for (i = 0; i < MAX; i++) {
     text[i] = getchar();
-    if (text[i] == '\n')
-      break;
+    if (text[i] == '\n') break;
   }
-  length = i; // Actual length of input string
+  length = i;  // Actual length of input string
 
   /* Analyze contents of text[]: */
 
-  for (i = lowercase = uppercase = digits = other = 0; i < length; i++)
-  {
+  for (i = lowercase = uppercase = digits = other = 0; i < length; i++) {
     c = text[i];
     if (c >= 'a' && c <= 'z')
       lowercase++;
@@ -35,15 +31,19 @@ int main()
       uppercase++;
     else if (c >= '0' && c <= '9')
       digits++;
-    else
-    {
-      if (c == '\n')
-        break;
+    else {
+      if (c == '\n') break;
       other++;
     }
   }
 
   puts("\nYou typed:");
+  printf("\t%s\n", text);
+  if (Pala == false) {
+    strrev(text);
+    printf("\t%s\n", text);
+  } else {
+  }
   printf("A string with %d characters\n", length);
   printf("\t%d lower case letters\n", lowercase);
   printf("\t%d upper case letters\n", uppercase);
